@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <Fragment>
       {loading ? (
-        <Loader />
+        <Loader /> 
       ) : (
         <Fragment>
           <MetaData title={`${user.name}'s Profile`} />

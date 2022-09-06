@@ -52,7 +52,7 @@ export const getProduct = (keyword="",currentPage=1,price=[0,100000],category,ra
         payload: data,
       });
     } catch (error) {
-      dispatch({
+      dispatch({ 
         type: ALL_PRODUCT_FAIL,
         payload: error.response.data.message,
       });

@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store'
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 
 // optional configuration
 const options = {

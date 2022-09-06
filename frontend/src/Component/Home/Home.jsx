@@ -1,7 +1,7 @@
 import React ,{Fragment,useEffect} from 'react'
 import { FaMousePointer } from 'react-icons/fa';
 import "./Home.css"
-import Product from './ProductCard.jsx';
+import ProductCard from './ProductCard.jsx';
 import MetaData from "../Layout/MetaData"
 import { getProduct } from '../../actions/productActions';
 import {useDispatch,useSelector} from "react-redux";
@@ -46,8 +46,10 @@ const Home = () => {
 
       <div className ="container" id = "container">
       
-     {products.map((product) =>(<Product product={product}/>))}
-        {/* <Product product = {product}/> */}
+      {products &&
+              products.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
 
       </div>
     </Fragment>}

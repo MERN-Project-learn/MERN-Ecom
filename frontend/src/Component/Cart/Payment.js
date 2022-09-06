@@ -3,30 +3,28 @@ import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../Layout/MetaData";
 import { Typography } from "@mui/material";
-// import { useAlert } from "react-alert";
-import { 
+import { useAlert } from "react-alert";
+import {
   CardNumberElement,
   CardCvcElement,
   CardExpiryElement,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./payment.css";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import EventIcon from "@mui/icons-material/Event";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { createOrder, clearErrors } from "../../actions/orderAction";
-import { useNavigate } from 'react-router-dom';
-
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-//   const alert = useAlert();
+  const navigate = useNavigate();
+  const alert = useAlert();
   const stripe = useStripe();
   const elements = useElements();
   const payBtn = useRef(null);
@@ -89,7 +87,7 @@ const Payment = () => {
       if (result.error) {
         payBtn.current.disabled = false;
 
-        // alert.error(result.error.message);
+        alert.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
           order.paymentInfo = {
@@ -101,21 +99,21 @@ const Payment = () => {
 
           navigate("/success");
         } else {
-          // alert.error("There's some issue while processing payment ");
+          alert.error("There's some issue while processing payment ");
         }
       }
     } catch (error) {
       payBtn.current.disabled = false;
-    //   alert.error(error.response.data.message);
+      alert.error(error.response.data.message);
     }
   };
 
   useEffect(() => {
     if (error) {
-    //   alert.error(error);
+      alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, error]);
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>
