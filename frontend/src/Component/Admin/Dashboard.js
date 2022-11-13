@@ -9,6 +9,7 @@ import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
 import MetaData from "../Layout/MetaData";
 import { Doughnut, Line } from "react-chartjs-2";
+import Footer from "../Layout/Footer/Footer";
 import {
   Chart,
   ArcElement,
@@ -124,7 +125,7 @@ const Dashboard = () => {
     <div className="dashboard">
       <MetaData title="Dashboard - Admin Panel" />
       <Sidebar />
-
+     
       <div className="dashboardContainer">
         <Typography component="h1">Dashboard</Typography>
 
@@ -164,7 +165,9 @@ const Dashboard = () => {
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />
         </div>
+       
       </div>
+      
     </div>
   );
 };

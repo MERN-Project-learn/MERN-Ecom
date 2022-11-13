@@ -14,6 +14,7 @@ import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import SideBar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import Footer from "../Layout/Footer/Footer";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
@@ -186,6 +187,7 @@ const navigate = useNavigate();
             </Button>
           </form>
         </div>
+       
       </div>
     </Fragment>
   );
